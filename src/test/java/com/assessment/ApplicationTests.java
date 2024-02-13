@@ -56,4 +56,27 @@ public class ApplicationTests {
 		Assert.assertNotNull(postResponse);
 		Assert.assertNotNull(postResponse.getBody());
 	}
+
+	@Test
+	public void testAddRewardsData() {
+		HttpHeaders headers = new HttpHeaders();
+		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+		ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/addRewardsData",
+				HttpMethod.GET, entity, String.class);
+
+		Assert.assertNotNull(response.getBody());
+	}
+
+	
+	@Test
+	public void testGetRewardsData() {
+		HttpHeaders headers = new HttpHeaders();
+		HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+		ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/getAllTransactions",
+				HttpMethod.GET, entity, String.class);
+
+		Assert.assertNotNull(response.getBody());
+	}
 }
