@@ -22,7 +22,7 @@ public class Transaction {
   private Double amount;
 
   @CreationTimestamp
-  @Temporal(TemporalType.TIMESTAMP)
+  @Temporal(TemporalType.DATE)
   @Column(name = "created_at", nullable = false)
   private Date createdAt;
 
