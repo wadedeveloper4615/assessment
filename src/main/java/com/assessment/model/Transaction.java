@@ -15,12 +15,6 @@ public class Transaction {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  @Column(name = "count")
-  private int count;
-
-  @Column(name = "points")
-  private int points;
-
   @Column(name = "name")
   private String name;
 
@@ -32,14 +26,6 @@ public class Transaction {
   private Date createdAt;
 
   public Transaction() {
-  }
-
-  public Transaction(int count, int points, String name, Double amount, Date createdAt) {
-    this.count = count;
-    this.points = points;
-    this.name = name;
-    this.amount = amount;
-    this.createdAt = createdAt;
   }
 
   public Transaction(String name, Double amount, Date createdAt) {
@@ -82,23 +68,6 @@ public class Transaction {
   
     @Override
     public String toString() {
-      return "Transaction [id=" + id + ", count=" + count + ", points=" + points + ", name=" + name + ", amount="
-          + amount + ", createdAt=" + createdAt + "]";
-    }
-
-    public int getCount() {
-      return count;
-    }
-
-    public void setCount(int count) {
-      this.count = count;
-    }
-
-    public int getPoints() {
-      return points;
-    }
-
-    public void setPoints(int points) {
-      this.points = points;
+      return "Transaction [id=" + id + ", name=" + name + ", amount=" + amount + ", createdAt=" + createdAt + "]";
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.assessment.model.Transaction;
+import com.assessment.model.*;
 import com.assessment.repository.TransactionRepository;
 import java.util.Collection;
 import java.util.HashMap;
@@ -48,13 +48,13 @@ public class RewardsController {
     }
     
     @GetMapping("/getRewardsData")
-        public Collection<Transaction> getAllTransactions() throws ParseException {
+        public Collection<TransactionDTO> getAllTransactions() throws ParseException {
             Collection<Transaction> data = transactionRepository.findAllTransactionsByNameAndDate("Customer 1",format.parse("2023-11-11") );
-            Collection<Transaction> result = new ArrayList<>();
+            Collection<TransactionDTO> result = new ArrayList<>();
             for(Transaction t : data){
              Double temp = ((t.getAmount()-100.00)*2) + (t.getAmount()-50.00);
              int points = temp.intValue();
-             Transaction obj = new Transaction(0,points,t.getName(),t.getAmount(),t.getCreatedAt());
+             TransactionDTO obj = new TransactionDTO(points,t.getName(),t.getAmount(),t.getCreatedAt());
              result.add(obj);                
             }
             return result;
